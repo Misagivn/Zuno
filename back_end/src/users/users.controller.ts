@@ -1,19 +1,13 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Controller, Get, Param, Post, Query } from '@nestjs/common';
 
 @Controller('users')
 export class UsersController {
   @Get()
-  getUsers(
-    @Query('page') page: number,
-    @Query('limit') limit: number,
-    @Query('sort') sort: string,
-    @Query('filter') filter: string,
-  ) {
-    return {
-      page,
-      limit,
-      sort,
-      filter,
-    };
+  getAllUsers(): string {
+    return `This action returns all users`;
+  }
+  @Get(':id')
+  getUserById(@Param('id') id: string): string {
+    return `This action returns a user with id: ${id}`;
   }
 }
