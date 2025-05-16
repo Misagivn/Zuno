@@ -64,7 +64,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   controller: _emailController,
                   decoration: InputDecoration(
                     labelText: 'Email',
-                    border: OutlineInputBorder(),
+                    border: OutlineInputBorder(), 
                     prefixIcon: Icon(Icons.email),
                   ),
                 ),

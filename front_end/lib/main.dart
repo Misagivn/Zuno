@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/login_screen.dart';
+import 'package:front_end/screens/splash_screen.dart';
 import 'utils/app_color.dart';
 
 void main() {
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Ứng dụng Mua Hàng',
+      title: 'Zuno',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: AppColors.button,
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: LoginScreen(),
+      home: SplashScreen(),
     );
   }
 }
