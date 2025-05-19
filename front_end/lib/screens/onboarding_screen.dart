@@ -24,7 +24,7 @@ class OnboardingScreen extends StatelessWidget {
         PageViewModel(
           title: "Mua sắm ngay",
           body:
-              "Zuno là ứng dụng mua sắm trực tuyến hiện đại, với giao diện thân thiện, Zuno mang đến trải nghiệm mua sắm tiện lợi, an toàn và cá nhân hóa cho mọi người.",
+              "Zuno là ứng dụng mua sắm trực tuyến hiện đại, mang đến trải nghiệm mua sắm tiện lợi, an toàn và cá nhân hóa cho tất cả mọi người.",
           image: Image.asset("images/splash1.png", width: 200),
           decoration: pageDecoration,
         ),
@@ -32,7 +32,7 @@ class OnboardingScreen extends StatelessWidget {
         PageViewModel(
           title: "Giảm giá mạnh",
           body:
-              "Hàng loạt chương trình giảm giá mạnh mỗi ngày, flash sale theo khung giờ và mã giảm giá độc quyền giúp người dùng tiết kiệm tối đa khi mua sắm.",
+              "Hàng loạt chương trình giảm giá mạnh mỗi ngày, flash sale theo khung giờ giúp người dùng tiết kiệm tối đa khi mua sắm tại Zuno.",
           image: Image.asset("images/splash2.png", width: 200),
           decoration: pageDecoration,
         ),
@@ -54,7 +54,7 @@ class OnboardingScreen extends StatelessWidget {
       Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Text(
-          "Zuno mang đến chính sách miễn phí giao hàng cực kỳ hấp dẫn. Với đơn hàng đạt mức tối thiểu hoặc trong các khung giờ ưu đãi, người dùng sẽ được miễn phí ship toàn quốc, bất kể sản phẩm nào. Mua sắm tại Zuno - tiện lợi từ giá cả đến tận tay!",
+          "Zuno mang đến chính sách miễn phí giao hàng cực kỳ hấp dẫn. Với đơn hàng trong các khung giờ ưu đãi, người dùng sẽ được miễn phí ship toàn quốc!",
           style: TextStyle(fontSize: 16),
           textAlign: TextAlign.center,
         ),
