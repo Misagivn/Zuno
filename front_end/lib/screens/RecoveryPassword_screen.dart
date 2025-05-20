@@ -1,58 +1,53 @@
 import 'package:flutter/material.dart';
+import 'package:front_end/screens/PasswordChangedSuccess_screen.dart';
 import 'package:front_end/utils/app_color.dart';
-import 'package:front_end/screens/RegisterSuccess_screen.dart';
 
-class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({super.key});
+class RecoveryPasswordScreen extends StatefulWidget {
+  const RecoveryPasswordScreen({super.key});
 
   @override
-  State<RegisterScreen> createState() => _RegisterScreenState();
+  State<RecoveryPasswordScreen> createState() => _RecoveryPasswordScreenState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+class _RecoveryPasswordScreenState extends State<RecoveryPasswordScreen> {
+  final TextEditingController _newPasswordController = TextEditingController();
   final TextEditingController _confirmPasswordController = TextEditingController();
 
-  void _handleRegister() {
-    final email = _emailController.text.trim();
-    final password = _passwordController.text.trim();
+  void _handleChangePassword() {
+    final newPassword = _newPasswordController.text.trim();
     final confirmPassword = _confirmPasswordController.text.trim();
 
-    if (email.isEmpty || password.isEmpty || confirmPassword.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Vui lòng điền đầy đủ thông tin')),
-      );
+    // Kiểm tra các trường có bị bỏ trống
+    if (newPassword.isEmpty || confirmPassword.isEmpty) {
+      _showMessage('Vui lòng điền đầy đủ thông tin');
       return;
     }
 
-    final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-    if (!emailRegex.hasMatch(email)) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Email không hợp lệ')),
-      );
+    // Kiểm tra độ dài mật khẩu
+    if (newPassword.length < 6) {
+      _showMessage('Mật khẩu phải có ít nhất 6 ký tự');
       return;
     }
 
-    if (password.length < 6) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Mật khẩu phải có ít nhất 6 ký tự')),
-      );
+    // Kiểm tra mật khẩu và xác nhận khớp nhau
+    if (newPassword != confirmPassword) {
+      _showMessage('Mật khẩu xác nhận không khớp');
       return;
     }
 
-    if (password != confirmPassword) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Mật khẩu không khớp')),
-      );
-      return;
-    }
+    // TODO: Gọi API đổi mật khẩu tại đây
+    print('✅ Mật khẩu đã đổi thành: $newPassword');
 
-    // TODO: Gọi API đăng ký tài khoản ở đây
-
+    // Chuyển sang màn hình thông báo thành công
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => RegisterSuccessScreen()),
+      MaterialPageRoute(builder: (context) => const PasswordChangedSuccessScreen()),
+    );
+  }
+
+  void _showMessage(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message)),
     );
   }
 
@@ -63,7 +58,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text('Đăng ký', style: TextStyle(color: AppColors.textDark)),
+        title: Text(
+          'Khôi phục mật khẩu',
+          style: TextStyle(color: AppColors.textDark),
+        ),
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: AppColors.textDark),
           onPressed: () => Navigator.pop(context),
@@ -75,20 +73,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: 24),
-            TextField(
-              controller: _emailController,
-              decoration: InputDecoration(
-                labelText: 'Email',
-                border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.email),
-              ),
+            Text(
+              'Vui lòng nhập mật khẩu mới cho tài khoản của bạn',
+              style: TextStyle(fontSize: 18, color: AppColors.textLight),
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 24),
             TextField(
-              controller: _passwordController,
+              controller: _newPasswordController,
               obscureText: true,
               decoration: InputDecoration(
-                labelText: 'Mật khẩu',
+                labelText: 'Mật khẩu mới',
                 border: OutlineInputBorder(),
                 prefixIcon: Icon(Icons.lock),
               ),
@@ -108,7 +102,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               width: double.infinity,
               height: 48,
               child: ElevatedButton(
-                onPressed: _handleRegister,
+                onPressed: _handleChangePassword,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.button,
                   shape: RoundedRectangleBorder(
@@ -116,7 +110,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ),
                 child: Text(
-                  'Đăng ký',
+                  'Xác nhận',
                   style: TextStyle(color: AppColors.textButton),
                 ),
               ),

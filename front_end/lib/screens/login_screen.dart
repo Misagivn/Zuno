@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:front_end/utils/app_color.dart';
 import 'register_screen.dart';
+import 'ForgotPassword_Screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -67,6 +68,30 @@ class _LoginScreenState extends State<LoginScreen> {
                     prefixIcon: Icon(Icons.lock),
                   ),
                 ),
+
+                // Thêm nút "Quên mật khẩu?"
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: TextButton(
+                    onPressed: () {
+                      // TODO: Điều hướng sang trang Quên mật khẩu
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ForgotPasswordScreen(),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      'Quên mật khẩu?',
+                      style: TextStyle(color: AppColors.button,
+                        fontSize: 15,
+                       
+                      ),
+                    ),
+                  ),
+                ),
+
                 SizedBox(height: 24),
                 SizedBox(
                   width: double.infinity,
@@ -74,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.button,
-                      shape: RoundedRectangleBorder( 
+                      shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
@@ -86,21 +111,31 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 SizedBox(height: 16),
-                Center(
-                  child: TextButton(
-                    onPressed: () {
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Chưa có tài khoản?",
+                      style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: 15,
+                      ),
+                    ),
+                    TextButton(onPressed: (){
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => RegisterScreen(),
                         ),
                       );
-                    },
-                    child: Text(
-                      'Chưa có tài khoản? Đăng ký',
-                      style: TextStyle(color: AppColors.textLight),
-                    ),
-                  ),
+                    }, child: Text("Đăng Ký",
+                      style: TextStyle(
+                        color: AppColors.button,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    )),
+                  ],
                 ),
               ],
             ),
