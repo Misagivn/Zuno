@@ -9,17 +9,12 @@ datasource db {
 }
 
 model Address {
-<<<<<<< HEAD
   id         String    @id(map: "PK__Address__3213E83F631B7741") @db.UniqueIdentifier
-=======
-  id         String    @id(map: "PK__Address__3213E83F859344C0") @db.UniqueIdentifier
->>>>>>> bf1aec344b5594bfc3c9185405b03d2250f09aa1
   userId     String?   @db.UniqueIdentifier
   address    String?   @db.NVarChar(200)
   addNote    String?   @db.NVarChar(500)
   created_at DateTime? @db.DateTime
   updated_at DateTime? @db.DateTime
-<<<<<<< HEAD
   Users      Users?    @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK__Address__userId__398D8EEE")
 }
 
@@ -30,27 +25,11 @@ model Cart {
   quantity    Int?
   Products    Products?     @relation(fields: [productId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK__Cart__productId__4E88ABD4")
   Users       Users?        @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK__Cart__userId__4D94879B")
-=======
-  Users      Users?    @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK__Address__userId__571DF1D5")
-}
-
-model Cart {
-  id          String        @id(map: "PK__Cart__3213E83F54D0BFD3") @db.UniqueIdentifier
-  userId      String?       @db.UniqueIdentifier
-  productId   String?       @db.UniqueIdentifier
-  quantity    Int?
-  Products    Products?     @relation(fields: [productId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK__Cart__productId__7C4F7684")
-  Users       Users?        @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK__Cart__userId__7B5B524B")
->>>>>>> bf1aec344b5594bfc3c9185405b03d2250f09aa1
   Transaction Transaction[]
 }
 
 model Categories {
-<<<<<<< HEAD
   id                String              @id(map: "PK__Categori__3213E83FD08481EC") @db.UniqueIdentifier
-=======
-  id                String              @id(map: "PK__Categori__3213E83FA17A0498") @db.UniqueIdentifier
->>>>>>> bf1aec344b5594bfc3c9185405b03d2250f09aa1
   categoryName      String?             @db.NVarChar(100)
   created_at        DateTime?           @db.DateTime
   updated_at        DateTime?           @db.DateTime
@@ -58,7 +37,6 @@ model Categories {
 }
 
 model PaymentMethod {
-<<<<<<< HEAD
   id          String        @id(map: "PK__PaymentM__3213E83FB301FE7D") @db.UniqueIdentifier
   paymentName String?       @db.NVarChar(50)
   description String?       @db.NVarChar(200)
@@ -68,31 +46,10 @@ model PaymentMethod {
 
 model ProductCategories {
   id         String      @id(map: "PK__ProductC__3213E83FAB3A223F") @db.UniqueIdentifier
-=======
-  id          String        @id(map: "PK__PaymentM__3213E83F50E79A44") @db.UniqueIdentifier
-  paymentName String?       @db.NVarChar(200)
-  description String?       @db.NVarChar(100)
-  img         String?       @db.NVarChar(1)
-  Transaction Transaction[]
-}
-
-model ProdcutImgs {
-  id         String    @id(map: "PK__ProdcutI__3213E83F7E6E4A86") @db.UniqueIdentifier
-  productId  String?   @db.UniqueIdentifier
-  url        String?   @db.NVarChar(1)
-  created_at DateTime? @db.DateTime
-  updated_at DateTime? @db.DateTime
-  Products   Products? @relation(fields: [productId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK__ProdcutIm__produ__778AC167")
-}
-
-model ProductCategories {
-  id         String      @id(map: "PK__ProductC__3213E83F532D7E96") @db.UniqueIdentifier
->>>>>>> bf1aec344b5594bfc3c9185405b03d2250f09aa1
   productId  String?     @db.UniqueIdentifier
   categoryId String?     @db.UniqueIdentifier
   created_at DateTime?   @db.DateTime
   updated_at DateTime?   @db.DateTime
-<<<<<<< HEAD
   Categories Categories? @relation(fields: [categoryId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK__ProductCa__categ__4AB81AF0")
   Products   Products?   @relation(fields: [productId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK__ProductCa__produ__49C3F6B7")
 }
@@ -108,20 +65,11 @@ model ProductImgs {
 
 model ProductReview {
   id            String       @id(map: "PK__ProductR__3213E83F5173E233") @db.UniqueIdentifier
-=======
-  Categories Categories? @relation(fields: [categoryId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK__ProductCa__categ__5AEE82B9")
-  Products   Products?   @relation(fields: [productId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK__ProductCa__produ__797309D9")
-}
-
-model ProductReview {
-  id            String       @id(map: "PK__ProductR__3213E83F6E68DDA9") @db.UniqueIdentifier
->>>>>>> bf1aec344b5594bfc3c9185405b03d2250f09aa1
   transactionId String?      @db.UniqueIdentifier
   review        Int?
   addNote       String?      @db.NVarChar(100)
   created_at    DateTime?    @db.DateTime
   updated_at    DateTime?    @db.DateTime
-<<<<<<< HEAD
   Transaction   Transaction? @relation(fields: [transactionId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK__ProductRe__trans__5CD6CB2B")
 }
 
@@ -133,37 +81,17 @@ model Products {
   price             Decimal?            @db.Decimal(18, 2)
   quantity          Int?
   status            String?             @db.NVarChar(20)
-=======
-  Transaction   Transaction? @relation(fields: [transactionId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK__ProductRe__trans__01142BA1")
-}
-
-model Products {
-  id                String              @id(map: "PK__Products__3213E83F10301EA2") @db.UniqueIdentifier
-  shopid            String?             @db.UniqueIdentifier
-  productName       String?             @db.NVarChar(100)
-  desciption        String?             @db.NVarChar(1)
-  price             Decimal?            @db.Decimal(18, 0)
-  quantity          Int?
-  status            String?             @db.NVarChar(1)
->>>>>>> bf1aec344b5594bfc3c9185405b03d2250f09aa1
   rating            Int?
   created_at        DateTime?           @db.DateTime
   updated_at        DateTime?           @db.DateTime
   Cart              Cart[]
-<<<<<<< HEAD
   ProductCategories ProductCategories[]
   ProductImgs       ProductImgs[]
   Shop              Shop?               @relation(fields: [shopid], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK__Products__shopid__412EB0B6")
-=======
-  ProdcutImgs       ProdcutImgs[]
-  ProductCategories ProductCategories[]
-  Shop              Shop?               @relation(fields: [shopid], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK__Products__shopid__76969D2E")
->>>>>>> bf1aec344b5594bfc3c9185405b03d2250f09aa1
   ProductVariants   ProductVariants[]
 }
 
 model ProductVariants {
-<<<<<<< HEAD
   id          String    @id(map: "PK__ProductV__3213E83F593E239A") @db.UniqueIdentifier
   productId   String?   @db.UniqueIdentifier
   variantName String?   @db.NVarChar(50)
@@ -175,24 +103,10 @@ model ProductVariants {
 
 model Shipment {
   id          String       @id(map: "PK__Shipment__3213E83F0B48A349") @db.UniqueIdentifier
-=======
-  id           String    @id(map: "PK__ProductV__3213E83FD5304443") @db.UniqueIdentifier
-  productId    String?   @db.UniqueIdentifier
-  vartiantName String?   @db.NVarChar(50)
-  img          String?   @db.NVarChar(1)
-  created_at   DateTime? @db.DateTime
-  updated_at   DateTime? @db.DateTime
-  Products     Products? @relation(fields: [productId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK__ProductVa__produ__787EE5A0")
-}
-
-model Shipment {
-  id          String       @id(map: "PK__Shipment__3213E83F51ED03B1") @db.UniqueIdentifier
->>>>>>> bf1aec344b5594bfc3c9185405b03d2250f09aa1
   orderId     String?      @db.UniqueIdentifier
   startDate   DateTime?    @db.DateTime
   expected    DateTime?    @db.DateTime
   endDate     DateTime?    @db.DateTime
-<<<<<<< HEAD
   status      String?      @db.NVarChar(20)
   Transaction Transaction? @relation(fields: [orderId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK__Shipment__orderI__59FA5E80")
 }
@@ -202,26 +116,11 @@ model ShipmentProvider {
   providerName String?       @db.NVarChar(50)
   description  String?       @db.NVarChar(200)
   price        Decimal?      @db.Decimal(18, 2)
-=======
-  status      String?      @db.NVarChar(1)
-  Transaction Transaction? @relation(fields: [orderId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK__Shipment__orderI__00200768")
-}
-
-model ShipmentProvider {
-  id           String        @id(map: "PK__Shipment__3213E83FA0EE6DA4") @db.UniqueIdentifier
-  providerName String?       @db.NVarChar(100)
-  description  String?       @db.NVarChar(200)
-  price        Decimal?      @db.Decimal(18, 0)
->>>>>>> bf1aec344b5594bfc3c9185405b03d2250f09aa1
   Transaction  Transaction[]
 }
 
 model Shop {
-<<<<<<< HEAD
   id              String     @id(map: "PK__Shop__3213E83FAE775DF4") @db.UniqueIdentifier
-=======
-  id              String     @id(map: "PK__Shop__3213E83FDC22EC67") @db.UniqueIdentifier
->>>>>>> bf1aec344b5594bfc3c9185405b03d2250f09aa1
   userId          String?    @db.UniqueIdentifier
   realName        String?    @db.NVarChar(80)
   shopName        String?    @db.NVarChar(100)
@@ -232,7 +131,6 @@ model Shop {
   rating          Int?
   certify         Boolean?
   productQuantity Int?
-<<<<<<< HEAD
   status          String?    @db.NVarChar(20)
   created_at      DateTime?  @db.DateTime
   updated_at      DateTime?  @db.DateTime
@@ -257,38 +155,11 @@ model Transaction {
   shipProvider     String?           @db.UniqueIdentifier
   payPrice         Decimal?          @db.Decimal(18, 2)
   status           String?           @db.NVarChar(20)
-=======
-  status          String?    @db.NVarChar(1)
-  created_at      DateTime?  @db.DateTime
-  updated_at      DateTime?  @db.DateTime
-  Products        Products[]
-  Users           Users?     @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK__Shop__userId__75A278F5")
-}
-
-model ShopReview {
-  id            String       @id(map: "PK__ShopRevi__3213E83F3474544A") @db.UniqueIdentifier
-  transactionId String?      @db.UniqueIdentifier
-  review        Int?
-  addNote       String?      @db.NVarChar(100)
-  created_at    DateTime?    @db.DateTime
-  updated_at    DateTime?    @db.DateTime
-  Transaction   Transaction? @relation(fields: [transactionId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK__ShopRevie__trans__02084FDA")
-}
-
-model Transaction {
-  id               String            @id(map: "PK__Transact__3213E83F9643BD6D") @db.UniqueIdentifier
-  cartId           String?           @db.UniqueIdentifier
-  paymentMethod    String?           @db.UniqueIdentifier
-  shipProvider     String?           @db.UniqueIdentifier
-  payPrice         Decimal?          @db.Decimal(18, 0)
-  status           String?           @db.NVarChar(1)
->>>>>>> bf1aec344b5594bfc3c9185405b03d2250f09aa1
   created_at       DateTime?         @db.DateTime
   updated_at       DateTime?         @db.DateTime
   ProductReview    ProductReview[]
   Shipment         Shipment[]
   ShopReview       ShopReview[]
-<<<<<<< HEAD
   Cart             Cart?             @relation(fields: [cartId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK__Transacti__cartI__5535A963")
   PaymentMethod    PaymentMethod?    @relation(fields: [paymentMethod], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK__Transacti__payme__5629CD9C")
   ShipmentProvider ShipmentProvider? @relation(fields: [shipProvider], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK__Transacti__shipP__571DF1D5")
@@ -299,30 +170,13 @@ model Users {
   username    String?   @db.NVarChar(50)
   email       String?   @db.NVarChar(50)
   password    String?   @db.NVarChar(255)
-=======
-  Cart             Cart?             @relation(fields: [cartId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK__Transacti__cartI__7D439ABD")
-  PaymentMethod    PaymentMethod?    @relation(fields: [paymentMethod], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK__Transacti__payme__7E37BEF6")
-  ShipmentProvider ShipmentProvider? @relation(fields: [shipProvider], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK__Transacti__shipP__7F2BE32F")
-}
-
-model Users {
-  id          String    @id(map: "PK__Users__3213E83FDD6C5002") @db.UniqueIdentifier
-  username    String?   @db.NVarChar(50)
-  email       String?   @db.NVarChar(50)
-  password    String?   @db.NVarChar(1)
->>>>>>> bf1aec344b5594bfc3c9185405b03d2250f09aa1
   role        String?   @db.NVarChar(10)
   realName    String?   @db.NVarChar(50)
   phoneNumber String?   @db.NVarChar(20)
   dob         DateTime? @db.DateTime
   sex         String?   @db.NVarChar(10)
-<<<<<<< HEAD
   avartar     String?   @db.NVarChar(500)
   status      String?   @db.NVarChar(20)
-=======
-  avartar     String?   @db.NVarChar(1)
-  status      String?   @db.NVarChar(1)
->>>>>>> bf1aec344b5594bfc3c9185405b03d2250f09aa1
   created_at  DateTime? @db.DateTime
   updated_at  DateTime? @db.DateTime
   Address     Address[]
